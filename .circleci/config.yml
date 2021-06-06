@@ -13,18 +13,20 @@ jobs:
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: circleci
+          POSTGRES_HOST_AUTH_METHOD: "trust"
     environment:
       NODE_ENV: test
       POSTGRES_USER: circleci
       POSTGRES_DB: circleci
+      POSTGRES_HOST_AUTH_METHOD: "trust"
     steps:
       - run:
-          name: Install ltree extension for Postgres
+          name: Install Postgresql client
           command: |
             sudo apt-get update
             sudo apt-get install postgresql-client
             dockerize -wait tcp://localhost:5432 -timeout 1m
-            psql -U circleci -h localhost -p 5432 -c 'create extension ltree'
+            psql -U circleci -h localhost -p 5432 
       - checkout
       - restore_cache:
           key: v1-deps-{{ checksum "package.json" }}
