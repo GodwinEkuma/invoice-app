@@ -19,7 +19,7 @@ type InvoiceModel {
   issueDate: String!
   dueDate: String!
   note: String!
-  items: [Item!]!
+  Items: [Item!]!
   taxAmount: Float!
   subTotal: Float!
   total: String!

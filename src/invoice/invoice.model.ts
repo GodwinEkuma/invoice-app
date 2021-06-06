@@ -84,7 +84,7 @@ export class InvoiceModel {
     default: [],
     nullable: false,
   })
-  items: Item[];
+  Items: Item[];
 
   @Column()
   @Field()

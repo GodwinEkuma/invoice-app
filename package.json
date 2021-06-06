@@ -12,7 +12,7 @@
     "migrate": "run-s build && run-s migration:run",
     "gen-migration": "run-s build && ts-node ./node_modules/typeorm/cli.js migration:generate -n",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "run-s migrate && node dist/src/main.js",
+    "start": "NODE_ENV=development run-s migrate && node dist/src/main.js",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -21,15 +21,17 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "NODE_ENV=test jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
+    "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.0.0",
     "@nestjs/graphql": "^7.3.7",
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/typeorm": "^7.0.0",
     "apollo-server-express": "^2.14.2",
+    "dotenv": "^9.0.2",
     "graphql": "^15.0.0",
     "graphql-tools": "^5.0.0",
     "pg": "^8.1.0",
