@@ -20,15 +20,6 @@ jobs:
       POSTGRES_DB: circleci
       POSTGRES_HOST_AUTH_METHOD: "trust"
     steps:
-      # - run:
-      #     name: Install Postgresql client
-      #     command: |
-      #       sudo apt-get update
-      #       sudo apt-get install postgresql-client
-      #       dockerize -wait tcp://localhost:5432 -timeout 1m
-      #       psql -U circleci -h localhost -p 5432 
-      
-      #  Wait for Postgres to be ready before proceeding
       - run:
           name: Waiting for Postgres to be ready
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
