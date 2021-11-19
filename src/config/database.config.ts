@@ -12,7 +12,8 @@ const database = {
       entities: [
         "dist/**/*.model.js"
       ],
-      synchronize: false
+      synchronize: false,
+      uuidExtension: 'pgcrypto'
     },
     test:  {
       type: "postgres",
@@ -33,7 +34,8 @@ const database = {
       cli: {
         migrationsDir: "src/database/migrations"
     },
-    keepConnectionAlive: true
+    keepConnectionAlive: true,
+    uuidExtension: 'pgcrypto'
     }
   }
 
